@@ -1,0 +1,30 @@
+version: "3.9"
+
+services:
+  frontend:
+    build:
+      context: ./frontend    # aponta para a pasta do frontend
+    container_name: frontend
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend1
+      - backend2
+
+  backend1:
+    build:
+      context: ./backend1   # aponta para a pasta do backend-1
+    container_name: backend1
+    environment:
+      - PORT=4001
+    ports:
+      - "4001:4001"
+
+  backend2:
+    build:
+      context: ./backend2   # aponta para a pasta do backend-2
+    container_name: backend2
+    environment:
+      - PORT=4002
+    ports:
+      - "4002:4002"

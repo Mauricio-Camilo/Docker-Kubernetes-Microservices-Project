@@ -41,8 +41,8 @@ spec:
     app: backend1
   ports:
     - protocol: TCP
-      port: 4001        # porta interna do cluster
-      targetPort: 4001  # porta do container
-      nodePort: 30001   # porta externa para o host
+      port: 4001        
+      targetPort: 4001  
+      nodePort: 30001   
   type: NodePort
 

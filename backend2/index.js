@@ -6,11 +6,16 @@ dotenv.config();
 
 const app = express();
 app.use(cors());
-const PORT = process.env.PORT || 4001;
+const PORT = process.env.PORT || 4002;
 
 app.get("/", (req, res) => {
-  res.send("Hello from Backend 2!");
+  res.send("Hello from Backend 2");
 });
+
+app.get("/test", (req, res) => {
+  res.send("Hello from Backend 2 calling from backend 1!");
+});
+
 
 app.listen(PORT, () => {
   console.log(`Backend 2 running on port ${PORT}`);

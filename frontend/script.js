@@ -1,5 +1,6 @@
 const urls = {
-  "backend-1": "http://localhost:4001/",
+  // "backend-1": "http://localhost:4001/",
+  "backend-1": "http://192.168.49.2:30001/",
   "backend-2": "http://localhost:4002/",
   "backend-3": "http://localhost:4003/"
 };

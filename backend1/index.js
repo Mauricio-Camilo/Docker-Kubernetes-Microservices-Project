@@ -8,7 +8,8 @@ dotenv.config();
 const app = express();
 app.use(cors());
 const PORT = process.env.PORT || 4001;
-const BACKEND2_URL = process.env.BACKEND2_URL || "http://backend2:4002/test"; 
+const BACKEND2_URL = process.env.BACKEND2_URL
+// const BACKEND2_URL = process.env.BACKEND2_URL || "http://backend2:4002/test"; 
 
 app.get("/", (req, res) => {
   res.send("Hello from Backend 1!");

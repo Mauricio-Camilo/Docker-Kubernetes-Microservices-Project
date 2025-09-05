@@ -22,7 +22,15 @@ spec:
             - containerPort: 4001
           env:
             - name: PORT
-              value: "4001"
+              valueFrom:
+                configMapKeyRef:
+                  name: backend1-config
+                  key: PORT            
+            - name: BACKEND2_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: backend1-config
+                  key: BACKEND2_URL
 ---
 apiVersion: v1
 kind: Service

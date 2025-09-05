@@ -1,9 +1,3 @@
-// const urls = {
-//   "backend-1": "http://localhost:4001/",
-//   // "backend-1": "http://192.168.49.2:30001/",
-//   "backend-2": "http://localhost:4001/test",
-// };
-
 const urls = window.BACKEND_URLS;
 
 // Estado de cada backend: true = mostrando, false = escondido

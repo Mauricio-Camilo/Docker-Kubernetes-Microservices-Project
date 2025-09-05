@@ -14,12 +14,37 @@ spec:
       labels:
         app: frontend
     spec:
+      volumes:
+        - name: config-volume
+          emptyDir: {}  # espaço temporário só para config.js
+      initContainers:
+        - name: init-config
+          image: busybox
+          command:
+            - sh
+            - -c
+            - |
+              echo "window.BACKEND_URLS = {" > /config/config.js
+              echo "  'backend-1': '${BACKEND1_URL}'," >> /config/config.js
+              echo "  'backend-2': '${BACKEND2_URL}'" >> /config/config.js
+              echo "};" >> /config/config.js
+              chmod 644 /config/config.js
+          envFrom:
+            - configMapRef:
+                name: frontend-config
+          volumeMounts:
+            - name: config-volume
+              mountPath: /config
       containers:
         - name: frontend
           image: frontend:latest  
           imagePullPolicy: IfNotPresent  
           ports:
             - containerPort: 80
+          volumeMounts:
+            - name: config-volume
+              mountPath: /usr/share/nginx/html/config.js
+              subPath: config.js  # monta apenas o arquivo, sem sobrescrever o resto
 ---
 apiVersion: v1
 kind: Service

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: backend1-config
+data:
+  PORT: "4001"
+  BACKEND2_URL: "http://backend2-service:4002/"

@@ -30,15 +30,18 @@ The project works both with **Docker Compose** and **Kubernetes/Minikube**.
 
 2. In the project root, create a `.env-docker` file with the following content:  
 
-   ```sh
+    ```sh
       BACKEND1_URL=http://localhost:4001/  
       BACKEND2_URL=http://localhost:4001/test  
     ```
 > These values indicate where the frontend will find the backends.
 
 3. Inside the `backend1` folder, create a `.env` file with the following content:  
-PORT=4001  
-BACKEND2_URL="http://backend2:4002/test"  
+
+    ```sh
+      PORT=4001  
+      BACKEND2_URL="http://backend2:4002/test"  
+    ```
 
 > This sets the port for **Backend 1** and the address of **Backend 2** within the container network, as it is not directly accessible from the browser.
 
@@ -48,9 +51,9 @@ BACKEND2_URL="http://backend2:4002/test"
 
 Start all containers with:  
 
-| Command | Description |
-|---------|-----------|
-| `docker compose --env-file ./.env-docker up --build -d` | Starts all services in the background |
+```sh
+   docker compose --env-file ./.env-docker up --build -d
+```
 
 To bring up the containers, run:  
 docker compose --env-file ./.env-docker up --build -d  
@@ -59,7 +62,9 @@ docker compose --env-file ./.env-docker up --build -d
 
 To access the application, open in the browser:
 
-http://localhost:3000
+```sh
+   http://localhost:3000
+```
 
 (image)
 
@@ -70,16 +75,22 @@ http://localhost:3000
 Make sure Minikube is installed: [Minikube Docs](https://minikube.sigs.k8s.io/docs/start/)
 
 1. Start Minikube:  
-minikube start
+
+```sh
+   minikube start
+```
 
 2. Configure Minikube’s Docker:  
-eval $(minikube docker-env)
+```sh
+   eval $(minikube docker-env)
+```
 
 3. Build the application images:  
-docker build --no-cache -t frontend ./frontend  
-docker build --no-cache -t backend1 ./backend1  
-docker build --no-cache -t backend2 ./backend2
-
+```sh
+   docker build --no-cache -t frontend ./frontend  
+   docker build --no-cache -t backend1 ./backend1  
+   docker build --no-cache -t backend2 ./backend2
+```
 ---
 
 ## 📦 Deploying the Microservices
@@ -87,33 +98,50 @@ docker build --no-cache -t backend2 ./backend2
 Follow the recommended order for deployments:
 
 1. **Backend 2:**  
-kubectl apply -f backend2/k8s/deployment-backend2.yml
+```sh
+   kubectl apply -f backend2/k8s/deployment-backend2.yml
+```
 
 2. **Backend 1 ConfigMap:**  
-kubectl apply -f backend1/k8s/backend1-config.yml
+```sh
+   kubectl apply -f backend1/k8s/backend1-config.yml
+```
 
 3. **Backend 1:**  
-kubectl apply -f backend1/k8s/deployment-backend1.yml
+```sh
+   kubectl apply -f backend1/k8s/deployment-backend1.yml
+```
 
 4. **Enable Ingress:**  
-minikube addons enable ingress
+```sh
+   minikube addons enable ingress
+```
 
-5. **Add local mapping for the frontend:**  
-echo "$(minikube ip) frontend.local" | sudo tee -a /etc/hosts
+5. **Add local mapping for the frontend:** 
+```sh
+   echo "$(minikube ip) frontend.local" | sudo tee -a /etc/hosts
+``` 
 
 6. **Frontend ConfigMap:**  
-kubectl apply -f frontend/k8s/frontend-config.yml
+```sh
+   kubectl apply -f frontend/k8s/frontend-config.yml
+```
 
 7. **Frontend:**  
-kubectl apply -f frontend/k8s/deployment-front.yml  
-kubectl apply -f frontend/k8s/ingress-front.yml
+```sh
+   kubectl apply -f frontend/k8s/deployment-front.yml  
+   kubectl apply -f frontend/k8s/ingress-front.yml
+```
 
 ---
 
 ## ✅ Testing
 
 After all deployments:  
-curl http://frontend.local  
+
+```sh
+   curl http://frontend.local 
+```
 
 Or open in the browser: `http://frontend.local` and test the buttons.
 
@@ -161,7 +189,7 @@ Or open in the browser: `http://frontend.local` and test the buttons.
 
     A simple simulation error is modifying the CMD in a backend Dockerfile to point to a non-existent file, for example:
 
-CMD ["node", "fake.js"]
+    CMD ["node", "fake.js"]
 
     (Error image)
 

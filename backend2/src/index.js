@@ -16,7 +16,6 @@ app.get("/test", (req, res) => {
   res.send("Hello from Backend 2 calling from backend 1!");
 });
 
-
 app.listen(PORT, () => {
   console.log(`Backend 2 running on port ${PORT}`);
 });

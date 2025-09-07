@@ -33,6 +33,6 @@ spec:
     app: backend2
   ports:
     - protocol: TCP
-      port: 4002        # porta interna do cluster
-      targetPort: 4002  # porta do container
-  type: ClusterIP       # só acessível dentro do cluster
+      port: 4002        
+      targetPort: 4002  
+  type: ClusterIP       

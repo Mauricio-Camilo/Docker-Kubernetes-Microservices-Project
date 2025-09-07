@@ -16,7 +16,7 @@ spec:
     spec:
       volumes:
         - name: config-volume
-          emptyDir: {}  # espaço temporário só para config.js
+          emptyDir: {}  
       initContainers:
         - name: init-config
           image: busybox
@@ -44,7 +44,7 @@ spec:
           volumeMounts:
             - name: config-volume
               mountPath: /usr/share/nginx/html/config.js
-              subPath: config.js  # monta apenas o arquivo, sem sobrescrever o resto
+              subPath: config.js  
 ---
 apiVersion: v1
 kind: Service

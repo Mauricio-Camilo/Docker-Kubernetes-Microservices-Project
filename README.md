@@ -74,26 +74,29 @@ docker build --no-cache -t backend2 ./backend2
 Siga a ordem recomendada para os deployments:
 
 1. **Backend 2:**  
-kubectl apply -f backend2/deployment-backend2.yml
+kubectl apply -f backend2/k8s/deployment-backend2.yml
 
 2. **ConfigMap do Backend 1:**  
-kubectl apply -f backend1/backend1-config.yml
+kubectl apply -f backend1/k8s/backend1-config.yml
 
 3. **Backend 1:**  
-kubectl apply -f backend1/deployment-backend1.yml
+kubectl apply -f backend1/k8s/deployment-backend1.yml
 
-4. **ConfigMap do Frontend:**  
-kubectl apply -f frontend/frontend-config.yml
-
-5. **Habilitar Ingress:**  
+4. **Habilitar Ingress:**  
 minikube addons enable ingress
 
-6. **Adicionar mapeamento local para o frontend:**  
+4. **Habilitar Ingress:**  
+minikube addons enable ingress
+
+5. **Adicionar mapeamento local para o frontend:**  
 echo "$(minikube ip) frontend.local" | sudo tee -a /etc/hosts
 
+6. **ConfigMap do Frontend:**  
+kubectl apply -f frontend/k8s/frontend-config.yml
+
 7. **Frontend:**  
-kubectl apply -f frontend/deployment-front.yml  
-kubectl apply -f frontend/ingress-front.yml
+kubectl apply -f frontend/k8s/deployment-front.yml  
+kubectl apply -f frontend/k8s/ingress-front.yml
 
 ---
 

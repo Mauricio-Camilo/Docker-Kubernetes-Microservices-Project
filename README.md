@@ -99,14 +99,14 @@ Make sure Minikube is installed: [Minikube Docs](https://minikube.sigs.k8s.io/do
 
 5. Update the frontend-config file
 
-Use the Minikube IP address for the following variables:
+   Use the Minikube IP address for the following variables:
 
 ```sh
   BACKEND1_URL: "<minikube ip>:30001/"
   BACKEND2_URL: "<minikube ip>:30001/test"
 ```
 
-The project comes with preset values, but if your Minikube IP is different, make sure to update them at this step.
+   The project comes with preset values, but if your Minikube IP is different, make sure to update them at this step.
 
 ---
 
@@ -156,7 +156,7 @@ Follow the recommended order for deployments:
 
 Once all deployments are completed:
 
-- You can test the frontend by simply open your browser and navigate to:
+You can test the frontend by simply open your browser and navigate to:
 
 ```sh
    http://frontend.local  
@@ -173,7 +173,7 @@ After testing, to switch back to your local Docker environment, run:
 ## 📌 Notes
 
 - ⚠️ **Backend 2** is not accessible from the browser; the frontend calls **Backend 1**, which forwards the request.  
-- 🔹 Building images inside Minikube is necessary for the cluster to see local images.  
+- Building images inside Minikube is necessary for the cluster to see local images.  
 - 🔧 The `.env-docker` and internal `.env` files ensure that the correct endpoints are used in Docker Compose and Kubernetes.
 
 ---

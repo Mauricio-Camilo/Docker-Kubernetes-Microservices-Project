@@ -28,18 +28,21 @@ The project works both with **Docker Compose** and **Kubernetes/Minikube**.
    ```
 
 
-2. In the project root, create a `.env-docker` file with the following content:  
+2. In the project root, create a `.env` file with the following content:  
 
     ```sh
-      BACKEND1_URL=http://localhost:4001/  
-      BACKEND2_URL=http://localhost:4001/test  
+      BACKEND1_URL=http://localhost:4001/
+      BACKEND2_URL=http://localhost:4001/test
+      BACKEND1_PORT=4001
+      BACKEND2_PORT=4002
+      FRONTEND_PORT=3000
     ```
 > These values indicate where the frontend will find the backends.
 
-3. Inside the `backend1` folder, create a `.env` file with the following content:  
+3. Inside the `backend1` folder, create a `.env` file with the following content only if you want to run this service without Docker Compose:
 
     ```sh
-      PORT=4001  
+      BACKEND1_PORT=4001 
       BACKEND2_URL="http://backend2:4002/test"  
     ```
 
@@ -52,7 +55,7 @@ The project works both with **Docker Compose** and **Kubernetes/Minikube**.
 Start all containers with:  
 
 ```sh
-   docker compose --env-file ./.env-docker up --build -d
+   docker compose up --build -d
 ```
 
 To bring up the containers, run:  
@@ -67,6 +70,12 @@ To access the application, open in the browser:
 ```
 
 ![Diagram](./images/Application.png)
+
+To stop all containers:  
+
+```sh
+   docker compose down
+```
 
 ---
 

@@ -9,9 +9,7 @@ services:
         BACKEND2_URL: ${BACKEND2_URL}
     container_name: frontend
     ports:
-      - "${FRONTEND_PORT}:80"
-    env_file:
-      - ./.env-docker      
+      - "${FRONTEND_PORT}:80"  
     depends_on:
       - backend1
       - backend2
@@ -34,10 +32,8 @@ services:
       context: ./backend2   
     container_name: backend2
     ## Enable this if you want to make your backend2 be acessible
-    # environment:
-    #   - PORT=4002
     # ports:
-    #   - "4002:4002"
+    #   - "${BACKEND2_PORT}:${BACKEND2_PORT}"
     networks:
       - internal       
 

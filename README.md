@@ -12,8 +12,8 @@
 - 🛠️ **Backend 2** (not directly accessible from the browser)  
 
 👉 The frontend has **two buttons**:  
-- 🔹 One calls **Backend 1** directly  
-- 🔹 The other calls **Backend 1**, which in turn triggers **Backend 2**  
+- One calls **Backend 1** directly  
+- The other calls **Backend 1**, which in turn triggers **Backend 2**  
 
 The project works both with **Docker Compose** and **Kubernetes/Minikube**.
 
@@ -23,10 +23,17 @@ The project works both with **Docker Compose** and **Kubernetes/Minikube**.
 
 1. Clone the repository to your machine.
 
-2. In the project root, create a `.env-docker` file with the following content:  
-BACKEND1_URL=http://localhost:4001/  
-BACKEND2_URL=http://localhost:4001/test  
+   ```sh
+    git clone https://github.com/Mauricio-Camilo/Docker-Kubernetes-Microservices-Project.git
+   ```
 
+
+2. In the project root, create a `.env-docker` file with the following content:  
+
+   ```sh
+      BACKEND1_URL=http://localhost:4001/  
+      BACKEND2_URL=http://localhost:4001/test  
+    ```
 > These values indicate where the frontend will find the backends.
 
 3. Inside the `backend1` folder, create a `.env` file with the following content:  

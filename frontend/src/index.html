@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>K8s Test App</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+  <body>
+    <h1>⚡ Microservices Test App</h1>
+
+    <div class="logos">
+      <img src="https://www.docker.com/wp-content/uploads/2022/03/vertical-logo-monochromatic.png" alt="Docker Logo">
+      <img src="https://kubernetes.io/images/wheel.svg" alt="Kubernetes Logo">
+    </div>
+
+    <button onclick="callBackend('backend-1')">Call Backend 1</button>
+    <p id="response-backend-1">Response from Backend 1 will appear here...</p>
+
+    <button onclick="callBackend('backend-2')">Call Backend 2</button>
+    <p id="response-backend-2">Response from Backend 2 will appear here...</p>
+
+    <script src="config.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

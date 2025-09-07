@@ -4,11 +4,16 @@
 [![Kubernetes](https://img.shields.io/badge/Kubernetes-326CE5?style=flat&logo=kubernetes&logoColor=white)](https://kubernetes.io/)
 [![Minikube](https://img.shields.io/badge/Minikube-7F52FF?style=flat&logo=minikube&logoColor=white)](https://minikube.sigs.k8s.io/docs/start/)
 
-Este projeto simula uma **aplicação em microserviços**, com um **frontend** simples e dois **backends** containerizados.
+---
 
-O frontend possui dois botões:  
-- 🖱️ Um chama diretamente o **Backend 1**  
-- 🖱️ O outro chama o **Backend 1**, que por sua vez chama o **Backend 2** (não acessível diretamente pelo navegador)
+✨ Este projeto demonstra uma aplicação em **arquitetura de microserviços**, com:  
+- 🖥️ **Frontend** simples  
+- ⚙️ **Backend 1**  
+- 🛠️ **Backend 2** (não acessível direto do navegador)  
+
+👉 O frontend possui **dois botões**:  
+- 🔹 Um chama diretamente o **Backend 1**  
+- 🔹 O outro chama o **Backend 1**, que por sua vez aciona o **Backend 2**  
 
 O projeto funciona tanto com **Docker Compose** quanto com **Kubernetes/Minikube**.
 
@@ -33,6 +38,12 @@ BACKEND2_URL="http://backend2:4002/test"
 ---
 
 ## 🐳 Rodando com Docker Compose
+
+Suba todos os containers com:  
+
+| Comando | Descrição |
+|---------|-----------|
+| `docker compose --env-file ./.env-docker up --build -d` | Sobe todos os serviços em background |
 
 Para subir os containers, execute:  
 docker compose --env-file ./.env-docker up --build -d  

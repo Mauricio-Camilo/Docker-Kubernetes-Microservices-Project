@@ -9,7 +9,7 @@ ARG BACKEND1_URL
 ARG BACKEND2_URL
 
 # Copia os arquivos do frontend para o diretório do Nginx
-COPY . /usr/share/nginx/html
+COPY src/ /usr/share/nginx/html
 
 # Gera config.js dinamicamente com as URLs dos backends
 RUN echo "window.BACKEND_URLS = {" > /usr/share/nginx/html/config.js && \

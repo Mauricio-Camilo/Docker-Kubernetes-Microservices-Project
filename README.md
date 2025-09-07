@@ -124,3 +124,38 @@ Ou abra no navegador: `http://frontend.local` e teste os botões.
 - Você pode adicionar **mais microserviços** seguindo a mesma lógica de configuração e deployments.
 
 ---
+
+## 💡 Possíveis Erros
+
+1. **Deployment sem imagem construída**  
+
+Um erro bastante comum ocorre quando você tenta criar o deployment de um microserviço antes de construir a imagem correspondente dentro do Docker do Minikube.
+
+O comando de kubectl apply pode ser aceito, mas ao inspecionar o pod, você verá algo como:
+
+(Imagem do erro)
+
+Isso acontece porque, embora o comando de deployment seja executado com sucesso, o Kubernetes não encontra a imagem necessária para iniciar o pod, portanto ele não consegue subir.
+
+2. **Deployment sem ConfigMap criado**  
+
+Outro erro frequente é tentar criar um deployment antes de criar o ConfigMap, especialmente para os microserviços backend1 e frontend.
+
+(Imagem do erro)
+
+O Kubernetes depende dos valores definidos no ConfigMap para configurar corretamente o pod. Se o ConfigMap não existir, o pod não consegue inicializar, gerando falha no deployment.
+
+---
+
+3. **Container com comando de inicialização incorreto**  
+
+Um erro simples de simulação é modificar o CMD no Dockerfile de algum backend para apontar para um arquivo que não existe, por exemplo:
+
+CMD ["node", "fake.js"]
+
+(Imagem do erro)
+
+Ao tentar subir o deployment, o Kubernetes cria o pod, mas o container não consegue iniciar e entra em estado CrashLoopBackOff. Esse erro acontece porque o comando de inicialização falha imediatamente, impedindo o pod de ficar em execução.
+
+---
+

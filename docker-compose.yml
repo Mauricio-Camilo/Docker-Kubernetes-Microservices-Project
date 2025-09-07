@@ -22,6 +22,8 @@ services:
     build:
       context: ./backend1   
     container_name: backend1
+    env_file:
+      - ./backend1/.env
     environment:
       - PORT=4001
     ports:

@@ -11,10 +11,10 @@ COPY package*.json ./
 RUN npm install
 
 # Copia o restante do código
-COPY . .
+COPY src/ ./src
 
 # Expõe a porta (só para documentação, não precisa ser fixa)
 EXPOSE 4001
 
 # Comando para iniciar a aplicação
-CMD ["node", "index.js"]
+CMD ["npm", "start"]

@@ -91,6 +91,23 @@ Make sure Minikube is installed: [Minikube Docs](https://minikube.sigs.k8s.io/do
    docker build --no-cache -t backend1 ./backend1  
    docker build --no-cache -t backend2 ./backend2
 ```
+
+4. Pegar o ip do minikube
+```sh
+   minikube ip 
+```
+
+5. Update the frontend-config file
+
+Use the Minikube IP address for the following variables:
+
+```sh
+  BACKEND1_URL: "<minikube ip>:30001/"
+  BACKEND2_URL: "<minikube ip>:30001/test"
+```
+
+The project comes with preset values, but if your Minikube IP is different, make sure to update them at this step.
+
 ---
 
 ## 📦 Deploying the Microservices

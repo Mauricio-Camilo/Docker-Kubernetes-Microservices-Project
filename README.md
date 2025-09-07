@@ -66,7 +66,7 @@ To access the application, open in the browser:
    http://localhost:3000
 ```
 
-(image)
+![Diagram](./images/Docker_Error.png)
 
 ---
 
@@ -137,13 +137,19 @@ Follow the recommended order for deployments:
 
 ## ✅ Testing
 
-After all deployments:  
+Once all deployments are completed:
+
+- You can test the frontend by simply open your browser and navigate to:
 
 ```sh
-   curl http://frontend.local 
+   http://frontend.local  
 ```
 
-Or open in the browser: `http://frontend.local` and test the buttons.
+After testing, to switch back to your local Docker environment, run:  
+
+```sh
+   eval $(minikube docker-env -u)
+```
 
 ---
 
@@ -171,7 +177,7 @@ Or open in the browser: `http://frontend.local` and test the buttons.
 
     The `kubectl apply` command may be accepted, but inspecting the pod shows something like:
 
-    (Error image)
+    ![Diagram](./images/NoImage_Error.png)
 
     This happens because, even though the deployment command succeeds, Kubernetes cannot find the required image to start the pod, so it fails to launch.
 
@@ -179,7 +185,7 @@ Or open in the browser: `http://frontend.local` and test the buttons.
 
     Another common mistake is creating a deployment before creating the ConfigMap, especially for backend1 and frontend microservices.
 
-    (Error image)
+    ![Diagram](./images/NoConfigMap_Error.png)
 
     Kubernetes relies on the values defined in the ConfigMap to correctly configure the pod. If the ConfigMap does not exist, the pod cannot initialize, causing deployment failure.
 
@@ -191,7 +197,7 @@ Or open in the browser: `http://frontend.local` and test the buttons.
 
     CMD ["node", "fake.js"]
 
-    (Error image)
+    ![Diagram](./images/Docker_Error.png)
 
     When attempting to deploy, Kubernetes creates the pod, but the container cannot start and enters CrashLoopBackOff. This happens because the startup command fails immediately, preventing the pod from running.
 

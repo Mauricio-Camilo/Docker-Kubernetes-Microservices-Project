@@ -17,4 +17,4 @@ COPY src/ ./src
 EXPOSE 4002
 
 # Comando para iniciar a aplicação
-CMD ["node", "src/app.js"]
+CMD ["npm", "start"]

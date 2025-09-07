@@ -66,7 +66,7 @@ To access the application, open in the browser:
    http://localhost:3000
 ```
 
-![Diagram](./images/Docker_Error.png)
+![Diagram](./images/Application.png)
 
 ---
 
